@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+    <p>При выходе со страницы в консоль будут выведены результаты расчета суммарной стоимости товаров</p>
+    <script>
+        var cont = [];
+        for(var key = 0; key < 10; key++) {
+            cont[key] = {
+                count: Math.floor(Math.random() * 10),
+                price: (Math.random() * 100).toFixed(2)
+            }
+        }
+
+        window.onbeforeunload = function(e) {
+            var totalCost = 0;
+            cont.forEach(function (e) {
+                totalCost += (e.count * e.price);
+            });
+            console.log(cont);
+            console.log(totalCost);
+            e.returnValue = true;
+        };
+    </script>
+</body>
+</html>
